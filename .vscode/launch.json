@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "env": {
+                "GTK_PATH": ""
+            },
+            "program": "${workspaceFolder}/steam-app.Gtk/bin/Debug/net7.0/arch-x64/steam-app.Gtk",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        }
+    ]
+}

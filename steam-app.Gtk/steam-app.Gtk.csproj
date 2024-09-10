@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>steam_app.Gtk</RootNamespace>
+    <RuntimeIdentifier>arch-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+
+    <PublishSingleFile>true</PublishSingleFile>
+    <!-- <PublishAot>true</PublishAot> -->
+    <StripSymbols>false</StripSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\steam-app\steam-app.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Eto.Platform.Gtk" Version="2.7.5" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+</Project>

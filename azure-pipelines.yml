@@ -1,0 +1,48 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+# - task: DotNetCoreCLI@2
+#   displayName: Build
+#   inputs:
+#     command: build
+#     projects: '**/*.csproj'
+#     arguments: '--configuration $(buildConfiguration)' # Update this to match your need
+
+- task: DotNetCoreCLI@2
+  displayName: Build GTK
+  inputs:
+    command: publish
+    publishWebProjects: False
+    projects: '**/steam-app.Gtk.csproj'
+    zipAfterPublish: false
+    arguments: '-c Release -o .\release /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary'
+
+- task: PublishPipelineArtifact@1
+  displayName: Publish GTK
+  inputs:
+    targetPath: $(Pipeline.Workspace)/s/release/steam-app.Gtk
+    artifact: GTK
+    publishLocation: pipeline
+
+- task: DotNetCoreCLI@2
+  displayName: Build WPF
+  inputs:
+    command: publish
+    publishWebProjects: False
+    zipAfterPublish: false
+    projects: '**/steam-app.Wpf.csproj'
+    arguments: '-c Release -o .\release'
+
+- task: PublishPipelineArtifact@1
+  displayName: Publish WPF
+  inputs:
+    targetPath: $(Pipeline.Workspace)/s/release/steam-app.Wpf
+    artifact: WPF
+    publishLocation: pipeline
