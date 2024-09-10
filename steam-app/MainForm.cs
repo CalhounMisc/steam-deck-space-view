@@ -10,14 +10,11 @@ public partial class MainForm : Form
 
     protected override void OnLoad(EventArgs e)
     {
-
         base.OnLoad(e);
 
         Populate();
 
     }
-
-
 
     private long GetDirSize(DirectoryInfo dir)
     {
