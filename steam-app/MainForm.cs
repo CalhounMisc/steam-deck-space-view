@@ -18,7 +18,6 @@ public partial class MainForm : Form
     }
 
 
-
     private long GetDirSize(DirectoryInfo dir)
     {
         var cmd = "du -sb " + dir.FullName;
